@@ -49,7 +49,8 @@ void testInvalidBatteryThrows() {
 
     try {
         Robot robot("坏数据机器人", 150);
-    } catch (const std::invalid_argument&) {
+    } catch (const std::invalid_argument& error) {
+        std::cout << "Caught expected exception: " << error.what() << "\n";
         thrown = true;
     }
 
@@ -61,8 +62,9 @@ void testEmptyNameThrows() {
 
     try {
         Robot robot("", 50);
-    } catch (const std::invalid_argument&) {
+    } catch (const std::invalid_argument& error) {
         thrown = true;
+        std::cout << "Caught expected exception: " << error.what() << "\n";
     }
 
     assert(thrown);
